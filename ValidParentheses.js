@@ -26,7 +26,7 @@ Output: false
  * @return {boolean}
  */
 var isValid = function(s) {
-    stack = []
+    let stack = []
     let hashmap = {')':'(', '}':'{', ']':'['}
     let openBrackets = '({['
     let counter = 0
