@@ -59,3 +59,31 @@ var lengthOfLongestSubstring = function (s) {
 
   return Math.max(...resultArr);
 };
+
+// This function below was faster than 91% of JS users and memory is better than 87%
+
+var lengthOfLongestSubstring2 = function (s) {
+  let n = s.length;
+  let result = 0;
+  if (s.length === 1) {
+    return 1;
+  }
+
+  if (s.length === 0) {
+    return 0;
+  }
+
+  let lastIndex = new Array(256).fill(-1);
+
+  let current = 0;
+
+  for (let i = 0; i < n; i++) {
+    current = Math.max(current, lastIndex[s.charCodeAt(i)] + 1);
+
+    result = Math.max(result, i - current + 1);
+
+    lastIndex[s.charCodeAt(i)] = i;
+  }
+
+  return result;
+};
