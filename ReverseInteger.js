@@ -26,7 +26,7 @@ Constraints:
 
 var reverse = function (x) {
   let str = Math.abs(x).toString();
-  let reverse = Number(Math.abs(x).toString().split("").reverse().join(""));
+  let reverse = Number(str.split("").reverse().join(""));
 
   if (reverse >= 2 ** 31 - 1 || reverse <= (-2) ** 31) {
     return 0;
