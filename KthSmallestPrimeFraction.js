@@ -56,3 +56,28 @@ var kthSmallestPrimeFraction = function (arr, k) {
     }
   }
 };
+
+var kthSmallestPrimeFraction = function (arr, k) {
+  if (arr.length === 2) {
+    return arr;
+  }
+  let check = [];
+  let checkMap = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = arr.length - 1; j > i; j--) {
+      check.push((arr[i] / arr[j]) * 100);
+      checkMap.push([arr[i], arr[j]]);
+    }
+  }
+
+  check.sort((a, b) => a - b);
+
+  for (let l = 0; l < checkMap.length; l++) {
+    let array = checkMap[l];
+    let num = (array[0] / array[1]) * 100;
+    if (num === check[k - 1]) {
+      return [array[0], array[1]];
+    }
+  }
+};
