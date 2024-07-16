@@ -27,6 +27,7 @@ Constraints:
 
 */
 
+//brute force
 var isPalindrome = function (x) {
   if (x === 0) {
     return true;
@@ -37,4 +38,56 @@ var isPalindrome = function (x) {
   let arr = x.toString().split("");
 
   return arr.join("") === arr.reverse().join("");
+};
+
+//Check from the left and the right-- this was the fastest algorithm
+var isPalindrome = function (x) {
+  if (x === 0) {
+    return true;
+  }
+  if (x < 0 || x % 10 === 0) {
+    return false;
+  }
+
+  let check = x.toString();
+  let left = 0;
+  let right = check.length - 1;
+
+  while (left < right) {
+    if (check[left] != check[right]) {
+      return false;
+    }
+    left++;
+    right--;
+  }
+
+  return true;
+};
+
+//Using recursion here-- this was the best for memory
+function palCheck(check, left, right) {
+  if (left >= right) {
+    return true;
+  } else if (check[left] != check[right]) {
+    return false;
+  } else {
+    left++;
+    right--;
+    return palCheck(check, left, right);
+  }
+}
+
+var isPalindrome = function (x) {
+  if (x === 0) {
+    return true;
+  }
+  if (x < 0 || x % 10 === 0) {
+    return false;
+  }
+
+  let check = x.toString();
+  let left = 0;
+  let right = check.length - 1;
+
+  return palCheck(check, left, right);
 };
