@@ -64,3 +64,6 @@ var longestPalindrome = function (s) {
 
   return longest;
 };
+
+
+// faster version but still slow
